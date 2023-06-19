@@ -2,9 +2,6 @@ import ContactListItem from '../ContactListItem/ContactListItem';
 import { ListOfContacts } from '../ContactList/ContactList.styled';
 import { useSelector } from 'react-redux';
 import { getContacts, getFilter } from 'redux/selectors';
-import { store } from 'redux/store';
-
-console.log(store);
 
 const getVisibleContacts = (contacts, filter) => {
   const normalizedFilter = filter.toLowerCase();

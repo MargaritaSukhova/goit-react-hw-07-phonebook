@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { nanoid } from '@reduxjs/toolkit';
 import { Form, Label, Input, Btn } from '../ContactForm/ContactForm.styled';
 import { getContacts } from 'redux/selectors';
-import { addContact } from 'redux/contactsSlice';
+import { addContact } from 'redux/operations';
 
 const ContactForm = () => {
   const [name, setName] = useState('');
@@ -25,7 +26,20 @@ const ContactForm = () => {
     if (checkContacts(name)) {
       return alert(`${name} is already in contacts list!`);
     }
-    dispatch(addContact(name, number));
+
+    const validPhone = num => {
+      return num.replace(/^(\d)(\d{3})(\d{3})(\d{4})$/, '$2-$3-$4');
+    };
+
+    console.log(validPhone('4950000000'));
+
+    const newContact = {
+      id: nanoid(),
+      name,
+      number: validPhone(number),
+    };
+
+    dispatch(addContact(newContact));
     reset();
   };
 

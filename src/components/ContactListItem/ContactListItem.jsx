@@ -5,7 +5,7 @@ import {
   Text,
   DelBtn,
 } from '../ContactListItem/ContactListItem.styled';
-import { deleteContact } from 'redux/contactsSlice';
+import { deleteContact } from 'redux/operations';
 
 const ContactListItem = ({ id, name, number }) => {
   const dispatch = useDispatch();
