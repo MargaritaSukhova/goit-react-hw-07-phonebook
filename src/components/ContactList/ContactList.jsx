@@ -1,7 +1,7 @@
 import ContactListItem from '../ContactListItem/ContactListItem';
 import { ListOfContacts } from '../ContactList/ContactList.styled';
 import { useSelector } from 'react-redux';
-import { getContacts, getFilter } from 'redux/selectors';
+import { getFilter, getSortedContacts } from 'redux/selectors';
 
 const getVisibleContacts = (contacts, filter) => {
   const normalizedFilter = filter.toLowerCase();
@@ -13,7 +13,7 @@ const getVisibleContacts = (contacts, filter) => {
 };
 
 const ContactList = () => {
-  const contacts = useSelector(getContacts);
+  const contacts = useSelector(getSortedContacts);
   const filter = useSelector(getFilter);
 
   const filteredContacts = getVisibleContacts(contacts, filter);
