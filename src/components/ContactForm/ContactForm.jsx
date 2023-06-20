@@ -27,16 +27,10 @@ const ContactForm = () => {
       return alert(`${name} is already in contacts list!`);
     }
 
-    const validPhone = num => {
-      return num.replace(/^(\d)(\d{3})(\d{3})(\d{4})$/, '$2-$3-$4');
-    };
-
-    console.log(validPhone('4950000000'));
-
     const newContact = {
       id: nanoid(),
       name,
-      number: validPhone(number),
+      number,
     };
 
     dispatch(addContact(newContact));
